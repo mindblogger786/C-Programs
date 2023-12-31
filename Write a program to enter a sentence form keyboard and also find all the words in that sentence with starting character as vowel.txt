@@ -1,0 +1,26 @@
+#include <iostream>
+#include <string>
+#include <cctype>
+
+bool isVowel(char c) {
+    c = tolower(c);
+    return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
+}
+
+int main() {
+    std::cout << "Enter a sentence: ";
+    std::string sentence;
+    std::getline(std::cin, sentence);
+
+    std::string word;
+    std::istringstream stream(sentence);
+
+    std::cout << "Words with starting character as a vowel:" << std::endl;
+    while (stream >> word) {
+        if (!word.empty() && isVowel(word[0])) {
+            std::cout << word << std::endl;
+        }
+    }
+
+    return 0;
+}

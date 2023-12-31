@@ -1,0 +1,22 @@
+#include <iostream>
+#include <stdexcept>
+
+class CustomException : public std::exception {
+public:
+    CustomException(const char* message) : std::exception(message) {}
+};
+
+int main() {
+    try {
+        int age = 15;
+        if (age < 18) {
+            throw CustomException("You are not allowed to vote because you are under 18.");
+        } else {
+            std::cout << "You are eligible to vote." << std::endl;
+        }
+    } catch (const CustomException& e) {
+        std::cout << "Custom Exception: " << e.what() << std::endl;
+    }
+
+    return 0;
+}

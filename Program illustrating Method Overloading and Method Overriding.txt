@@ -1,0 +1,35 @@
+#include <iostream>
+
+class Animal {
+public:
+    void makeSound() {
+        std::cout << "Animal makes a generic sound" << std::endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void makeSound() override {
+        std::cout << "Dog barks" << std::endl;
+    }
+
+    void makeSound(int count) {
+        for (int i = 0; i < count; i++) {
+            std::cout << "Dog barks " << (i + 1) << " times" << std::endl;
+        }
+    }
+};
+
+int main() {
+    Animal genericAnimal;
+    Dog myDog;
+
+    std::cout << "Method Overriding Example:" << std::endl;
+    genericAnimal.makeSound();
+    myDog.makeSound();
+
+    std::cout << "\nMethod Overloading Example:" << std::endl;
+    myDog.makeSound(3);
+
+    return 0;
+}

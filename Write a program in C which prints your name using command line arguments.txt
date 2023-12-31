@@ -1,0 +1,12 @@
+#include<iostream.h>
+
+int main(int argc, char* argv[]) {
+    if (argc == 2) {
+        std::string name = argv[1];
+        std::cout << "My name is: " << name << std::endl;
+    } else {
+        std::cout << "Please provide your name as a command line argument." << std::endl;
+    }
+
+    return 0;
+}

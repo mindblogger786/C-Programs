@@ -1,0 +1,38 @@
+#include <iostream.h>
+#include <cctype.h>
+
+bool isPalindrome(const std::string& str) {
+    std::string modifiedStr;
+    for (char c : str) {
+        if (!std::isspace(c)) {
+            modifiedStr += std::tolower(c);
+        }
+    }
+
+    int left = 0;
+    int right = modifiedStr.length() - 1;
+
+    while (left < right) {
+        if (modifiedStr[left] != modifiedStr[right]) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+
+    return true;
+}
+
+int main() {
+    std::cout << "Enter a string: ";
+    std::string input;
+    std::getline(std::cin, input);
+
+    if (isPalindrome(input)) {
+        std::cout << "The entered string is a palindrome." << std::endl;
+    } else {
+        std::cout << "The entered string is not a palindrome." << std::endl;
+    }
+
+    return 0;
+}

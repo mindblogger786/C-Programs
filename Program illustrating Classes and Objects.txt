@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// Define the Person structure
+struct Person {
+    char name[50];
+    int age;
+};
+
+// Function to create a new Person
+struct Person createPerson(const char* name, int age) {
+    struct Person newPerson;
+    strcpy(newPerson.name, name);
+    newPerson.age = age;
+    return newPerson;
+}
+
+// Function to display information about a Person
+void displayInfo(struct Person* person) {
+    printf("Name: %s\n", person->name);
+    printf("Age: %d\n", person->age);
+}
+
+int main() {
+    // Create Person objects
+    struct Person person1 = createPerson("John", 30);
+    struct Person person2 = createPerson("Alice", 25);
+
+    // Display information
+    printf("Person 1:\n");
+    displayInfo(&person1);
+
+    printf("\nPerson 2:\n");
+    displayInfo(&person2);
+
+    return 0;
+}

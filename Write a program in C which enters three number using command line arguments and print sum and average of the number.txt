@@ -1,0 +1,21 @@
+#include <iostream>
+#include <cstdlib>
+
+int main(int argc, char* argv[]) {
+    if (argc != 4) {
+        std::cout << "Please provide three numbers as command line arguments." << std::endl;
+        return 1; // Return an error code
+    }
+
+    int num1 = std::atoi(argv[1]);
+    int num2 = std::atoi(argv[2]);
+    int num3 = std::atoi(argv[3]);
+
+    int sum = num1 + num2 + num3;
+    double average = static_cast<double>(sum) / 3;
+
+    std::cout << "Sum of the numbers: " << sum << std::endl;
+    std::cout << "Average of the numbers: " << average << std::endl;
+
+    return 0; // Return success code
+}

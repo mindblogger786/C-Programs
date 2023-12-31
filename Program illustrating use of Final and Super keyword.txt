@@ -1,0 +1,55 @@
+#include<iostream.h>
+#include<string.h>
+
+class Parent {
+public:
+    const int finalVar = 10; // A final variable
+
+    void finalMethod() const {
+        std::cout << "This is a final method in the Parent class." << std::endl;
+    }
+};
+
+class Child : public Parent {
+    // Uncommenting this will result in a compilation error
+    // void finalMethod() override {
+    //     std::cout << "This is an overridden method in the Child class." << std::endl;
+    // }
+};
+
+class Animal {
+public:
+    std::string species;
+
+    Animal(const std::string& species) : species(species) {}
+
+    void makeSound() const {
+        std::cout << "Animal makes a sound." << std::endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    std::string breed;
+
+    Dog(const std::string& species, const std::string& breed) : Animal(species), breed(breed) {}
+
+    void makeSound() const override {
+        std::cout << "Dog barks." << std::endl;
+    }
+};
+
+int main() {
+    Parent parent;
+    std::cout << "Final Variable: " << parent.finalVar << std::endl;
+    parent.finalMethod();
+
+    Child child;
+
+    Dog myDog("Canine", "Labrador");
+    std::cout << "Species: " << myDog.species << std::endl;
+    std::cout << "Breed: " << myDog.breed << std::endl;
+    myDog.makeSound();
+
+    return 0;
+}

@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <math.h>
+
+// Define the Shape structure
+struct Shape {
+    double (*area)();
+    double (*perimeter)();
+};
+
+// Define functions for Circle
+double circleArea(double radius) {
+    return M_PI * radius * radius;
+}
+
+double circlePerimeter(double radius) {
+    return 2 * M_PI * radius;
+}
+
+// Define functions for Rectangle
+double rectangleArea(double length, double width) {
+    return length * width;
+}
+
+double rectanglePerimeter(double length, double width) {
+    return 2 * (length + width);
+}
+
+int main() {
+    // Create Shape objects for Circle and Rectangle
+    struct Shape circle = {circleArea, circlePerimeter};
+    struct Shape rectangle = {rectangleArea, rectanglePerimeter};
+
+    // Calculate and display information
+    double circleRadius = 5.0;
+    double rectangleLength = 4.0;
+    double rectangleWidth = 6.0;
+
+    printf("Circle - Area: %f, Perimeter: %f\n", circle.area(circleRadius), circle.perimeter(circleRadius));
+    printf("Rectangle - Area: %f, Perimeter: %f\n", rectangle.area(rectangleLength, rectangleWidth), rectangle.perimeter(rectangleLength, rectangleWidth));
+
+    return 0;
+}
